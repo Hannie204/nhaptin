@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form</title>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-image: url('https://cdn.discordapp.com/attachments/1020013741196189729/1096113839440924815/anh.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    /* Thiết lập phần giao diện cho trang web */
+    body {
+      font-family: sans-serif;
+      background-color: #f2f2f2;
+    }
+    #container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    form {
+      margin-bottom: 0;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #0066cc;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #0059b3;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Nhập Thông tin của bạn</h1>
+    <form id="my-form" onsubmit="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley'); return false;">
+      <label for="name">Tên:</label>
+      <input type="text" id="name" name="name">
+      <label for="age">Tuổi:</label>
+      <input type="text" id="age" name="age">
+      <label for="sothich">Sở thích:</label>
+      <input type="text" id="sothich" name="sothich">
+      <input type="submit" value="Gửi">
+    </form>
+    
+  </div>
+  <script>
+    var form = document.getElementById("my-form");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      var name = document.getElementById("name").value;
+      var age = document.getElementById("age").value;
+      var sothich = document.getElementById("sothich").value;
+      var data = {
+        "username": "Hannie204",
+        "avatar_url": "https://images-ext-2.discordapp.net/external/Slzw88IXdE24ytR4zuNmKstSI-lD6G38qvQzxXrVJkU/%3Fsize%3D4096/https/cdn.discordapp.com/avatars/942487561308372992/a7d5fe8cace5a0faaa1ba4983cdefacd.png?width=676&height=676",
+        "embeds": [{
+          "title": "Thông tin người dùng",
+          "description": "Đây là thông tin được gửi từ trang web",
+          "color": 16711680,
+          "fields": [
+            {
+              "name": "Tên",
+              "value": name,
+              "inline": true
+            },
+            {
+              "name": "Tuổi",
+              "value": age,
+              "inline": true
+            },
+            {
+              "name": "Sở thich",
+              "value": sothich,
+              "inline": true
+            }
+          ]
+        }]
+      };
+      axios.post("https://discord.com/api/webhooks/1096640171140726876/Hg6SMNMWs3xJ1tTFyY_KBu5wZmUw8yqrwYSoIz_trv9VAhqsOCQh0vdgo_gleFfyGEgd", data)
+        .then(function(response) {
+          window.location.replace("success.html");
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    });
+  </script>
+</body>
+</html>
